@@ -1,26 +1,20 @@
-FROM node:18-slim
-
-COPY package*.json /usr/package*.json
-COPY . .
-
-# Create app directory
+# Build app
+FROM node:18-slim AS builder
 WORKDIR /usr/src/newshive
 
-# Install app dependencies
+COPY package*.json ./
 RUN npm install --frozen-lockfile
 
-# Bundle app source
-WORKDIR /usr/src/newshive
+COPY src ./src
+COPY public ./public
 RUN npm run build
 
-RUN npm install --frozen-lockfile --production --ignore-scripts
-
-
-# Build app
+# Run app
 FROM node:18-slim
-COPY --from=builder /usr/src /usr/src
-
 WORKDIR /usr/src/newshive
+
+COPY --from=builder /usr/src/newshive/build ./build
+COPY --from=builder /usr/src/newshive/node_modules ./node_modules
 
 ENV NODE_ENV=production
 
