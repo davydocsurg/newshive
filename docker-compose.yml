@@ -16,8 +16,20 @@ services:
   mongo:
     image: mongo
     ports:
-      - 27001:27001
+      - 27017:27017
     networks:
       - newshive-network
     volumes:
       - ./mongo-data:/data/db
+
+networks:
+  newshive-network:
+    driver: bridge
+
+volumes:
+  mongodb:
+   driver: local
+  mongo-data:
+   driver: local
+  mongo-config:
+   driver: local
