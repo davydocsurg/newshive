@@ -4,12 +4,13 @@
     "description": "REST API with nodejs",
     "main": "index.ts",
     "scripts": {
-        "dev": "ts-node-dev --respawn --transpile-only index.ts",
-        "test": "mocha --recursive --timeout 10000 --exit build/test"
+        "dev": "ts-node-dev --respawn --transpile-only src/index.ts",
+        "test": "mocha --recursive --timeout 10000 --exit build/test",
+        "build": "tsc -p . && cp -r public build/public"
     },
     "repository": {
         "type": "git",
-        "url": "https://github.com/davydocsurg/node-rest-api"
+        "url": "https://github.com/davydocsurg/news-hive.git"
     },
     "keywords": [
         "typescript",

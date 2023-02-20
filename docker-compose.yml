@@ -1,0 +1,43 @@
+version: '3'
+
+services:
+  newshive:
+    container_name: newshive
+    build:
+      context: .
+      dockerfile: Dockerfile
+      args:
+        - NODE_ENV=development
+    image: node
+    volumes:
+      - .:/src
+    ports:
+      - 8080:8080
+    networks:
+      - newshive-network
+    depends_on:
+      - newshive-mongo
+    command: ['npm', 'run', 'dev']
+
+  newshive-mongo:
+    image: mongo:5.0
+    container_name: newshive-mongo
+    ports:
+      - 27017:27017
+    networks:
+      - newshive-network
+    volumes:
+      - newshive-mongo:/data/db
+      - newshive-mongo_config:/data/configdb
+
+networks:
+  newshive-network:
+    driver: bridge
+
+volumes:
+  newshive-mongo:
+   driver: local
+  newshive-mongo_config:
+   driver: local
+
+  # ./mongo-data:/data/db
