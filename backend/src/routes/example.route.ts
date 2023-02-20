@@ -1,5 +1,5 @@
 import express from "express";
-import ExampleController from "../controllers/ExampleController";
+import ExampleController from "../controllers/AuthController";
 import { catchAsync } from "../helpers";
 import { ValidateCreateExampleRequest } from "../middlewares/validators";
 

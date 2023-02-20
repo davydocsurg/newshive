@@ -1,15 +1,15 @@
 import { NextFunction, Request, Response } from "express";
 import { Logging } from "../helpers";
-import { Example } from "../models";
+import { User } from "../models";
 
-class ExampleController {
+class AuthController {
     constructor() {
-        this.createExample = this.createExample.bind(this);
+        this.register = this.register.bind(this);
     }
 
-    async createExample(req: Request, res: Response, next: NextFunction) {
+    async register(req: Request, res: Response, next: NextFunction) {
         try {
-            let example = await Example.create({
+            let example = await User.create({
                 title: req.body.title,
                 description: req.body.description,
             });
@@ -26,4 +26,4 @@ class ExampleController {
     }
 }
 
-export default new ExampleController();
+export default new AuthController();
