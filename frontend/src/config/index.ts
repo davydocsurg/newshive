@@ -1,3 +1,3 @@
-import { NEWS_API_BASE_URL, sections, sidebar } from "./constants";
+import { NEWS_API_BASE_URL, sections, sidebar, drawerWidth } from "./constants";
 
-export { NEWS_API_BASE_URL, sections, sidebar };
+export { NEWS_API_BASE_URL, sections, sidebar, drawerWidth };

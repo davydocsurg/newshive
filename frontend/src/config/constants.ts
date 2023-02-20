@@ -38,3 +38,4 @@ export const sidebar = {
         { name: "Facebook", icon: FacebookIcon },
     ],
 };
+export const drawerWidth: number = 240;
