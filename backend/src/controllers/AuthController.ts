@@ -1,6 +1,32 @@
 import { NextFunction, Request, Response } from "express";
-import { checkUser, Logging } from "../helpers";
+import jwt from "jsonwebtoken";
+import { cookieOptions, JWT_SECRET } from "../commons";
+import { AppError, checkUser, Logging } from "../helpers";
 import { User } from "../models";
+
+// types
+import type { AuthRequest } from "../types";
+
+const signToken = (id: string, type: string) => {
+    const jwt_key: string = JWT_SECRET;
+    const token = jwt.sign({ id, type }, jwt_key, { expiresIn: "1d" });
+    return token;
+};
+
+const createSendToken = (
+    user: any,
+    statusCode: number = 200,
+    res: Response
+) => {
+    const token = signToken(user._id, user.type);
+    if (process.env.NODE_ENV === "production") cookieOptions.secure = true;
+    res.cookie("jwt", token, cookieOptions);
+    res.status(statusCode).json({
+        success: true,
+        token,
+        user,
+    });
+};
 
 class AuthController {
     constructor() {
@@ -47,6 +73,22 @@ class AuthController {
                 errors: { error },
             });
         }
+    }
+
+    async login(req: AuthRequest, res: Response, next: NextFunction) {
+        const { email, password } = req.body;
+
+        const user = await User.findOne({ email }).select("+password");
+
+        if (!user || !(await user.checkPassword(password, user.password))) {
+            let errors = {
+                email: "Email or password is incorrect",
+            };
+            return next(new AppError("Incorrect credentials", 422, errors));
+        }
+        user.password = undefined;
+        req.user = user;
+        createSendToken(user, 200, res);
     }
 }
 
