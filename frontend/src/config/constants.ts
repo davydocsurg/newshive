@@ -39,3 +39,4 @@ export const sidebar = {
     ],
 };
 export const drawerWidth: number = 240;
+export const languages = ["en", "ar", "de", "es", "fr", "he"];

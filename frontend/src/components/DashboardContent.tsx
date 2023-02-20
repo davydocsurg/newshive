@@ -15,7 +15,14 @@ import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import NotificationsIcon from "@mui/icons-material/Notifications";
 import Typography from "@mui/material/Typography";
 
-import { AppBar, Drawer, mainListItems, secondaryListItems } from "@/commons";
+import {
+    AppBar,
+    CustomSelect,
+    Drawer,
+    mainListItems,
+    secondaryListItems,
+} from "@/commons";
+import { drawerWidth, languages } from "@/config";
 
 function DashboardContent() {
     const [open, setOpen] = useState(true);
@@ -67,7 +74,18 @@ function DashboardContent() {
                         </IconButton>
                     </Toolbar>
                 </AppBar>
-                <Drawer variant="permanent" open={open}>
+                <Drawer
+                    variant="persistent"
+                    open={open}
+                    sx={{
+                        width: drawerWidth,
+                        flexShrink: 0,
+                        "& .MuiDrawer-paper": {
+                            width: drawerWidth,
+                            boxSizing: "border-box",
+                        },
+                    }}
+                >
                     <Toolbar
                         sx={{
                             display: "flex",
@@ -82,7 +100,12 @@ function DashboardContent() {
                     </Toolbar>
                     <Divider />
                     <List component="nav">
-                        {mainListItems}
+                        <Box sx={{ minWidth: 120, maxWidth: 220 }}>
+                            <CustomSelect
+                                label="Article Language"
+                                options={languages}
+                            />
+                        </Box>
                         <Divider sx={{ my: 1 }} />
                         {secondaryListItems}
                     </List>

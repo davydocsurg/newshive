@@ -4,7 +4,12 @@ import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { useState } from "react";
 
-const CustomSelect = (props: any) => {
+interface customSelectProps {
+    label: string;
+    options: string[];
+}
+
+const CustomSelect = ({ label, options }: customSelectProps) => {
     const [age, setAge] = useState("");
 
     const handleChange = (event: SelectChangeEvent) => {
@@ -13,7 +18,7 @@ const CustomSelect = (props: any) => {
 
     return (
         <FormControl fullWidth>
-            <InputLabel id="demo-simple-select-label">Age</InputLabel>
+            <InputLabel id="demo-simple-select-label">{label}</InputLabel>
             <Select
                 labelId="demo-simple-select-label"
                 id="demo-simple-select"
@@ -21,9 +26,13 @@ const CustomSelect = (props: any) => {
                 label="Age"
                 onChange={handleChange}
             >
-                <MenuItem value={10}>Ten</MenuItem>
-                <MenuItem value={20}>Twenty</MenuItem>
-                <MenuItem value={30}>Thirty</MenuItem>
+                {options.map((option, index) => {
+                    return (
+                        <MenuItem key={index} value={option}>
+                            {option}
+                        </MenuItem>
+                    );
+                })}
             </Select>
         </FormControl>
     );
