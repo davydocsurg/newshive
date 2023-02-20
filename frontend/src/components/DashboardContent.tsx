@@ -23,7 +23,11 @@ function DashboardContent() {
         setOpen(!open);
     };
 
-    const mdTheme = createTheme();
+    const mdTheme = createTheme({
+        palette: {
+            mode: "dark",
+        },
+    });
 
     return (
         <ThemeProvider theme={mdTheme}>
@@ -54,12 +58,12 @@ function DashboardContent() {
                             noWrap
                             sx={{ flexGrow: 1 }}
                         >
-                            Dashboard
+                            NewsHive
                         </Typography>
                         <IconButton color="inherit">
-                            <Badge badgeContent={4} color="secondary">
-                                <NotificationsIcon />
-                            </Badge>
+                            {/* <Badge badgeContent={4} color="secondary"> */}
+                            <MenuIcon />
+                            {/* </Badge> */}
                         </IconButton>
                     </Toolbar>
                 </AppBar>
