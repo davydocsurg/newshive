@@ -1,4 +1,4 @@
-import ValidateCreateExampleRequest from "./createExample";
+import ValidateRegistrationRequest from "./register";
 import validate from "./validate";
 
-export { ValidateCreateExampleRequest, validate };
+export { ValidateRegistrationRequest, validate };

@@ -84,24 +84,21 @@ const UserSchema: Schema = new mongoose.Schema(
             type: String,
             default: "users/default.png",
         },
-        stocks: {
+        news: {
             type: mongoose.Schema.Types.ObjectId,
-            ref: "Stock",
+            ref: "News",
         },
-        cart: {
+        // create reference to news: users can save news
+        saves: {
             items: [
                 {
-                    stock: {
+                    news: {
                         type: Object,
                         required: true,
                     },
-                    stockId: {
+                    newsId: {
                         type: Schema.Types.ObjectId,
                         ref: "User",
-                        required: true,
-                    },
-                    quantity: {
-                        type: Number,
                         required: true,
                     },
                 },
@@ -112,6 +109,53 @@ const UserSchema: Schema = new mongoose.Schema(
         timestamps: true,
     }
 );
+
+UserSchema.pre("save", async function (next) {
+    // Logging.info(this.id);
+    this.slug = slugify(this.name + this.id, { lower: true });
+    if (this.isModified("password")) {
+        const hashedPassword = await bcrypt.hash(this.password, 12);
+        this.password = hashedPassword;
+        this.passwordConfirmtion = undefined;
+    }
+    next();
+});
+
+UserSchema.pre("save", async function (next) {
+    if (!this.isModified("password") || this.isNew) return next();
+    this.passwordChangedAt = Date.now() - 5000;
+    next();
+});
+
+UserSchema.methods.checkPassword = async function (
+    password: string,
+    hash: string
+) {
+    return await bcrypt.compare(password, hash);
+};
+
+UserSchema.methods.changedPasswordAfter = function (token_timestamp: string) {
+    if (this.passwordChangedAt) {
+        const changedTimestamp =
+            parseInt(this.passwordChangedAt.getTime(), 10) / 1000;
+        return parseInt(token_timestamp, 10) < changedTimestamp;
+    }
+
+    return false;
+};
+
+UserSchema.methods.createPasswordResetToken = function (
+    password: string,
+    hash: string
+) {
+    const resetToken = crypto.randomBytes(32).toString("hex");
+
+    this.passwordResetToken = crypto
+        .createHash("vyd436")
+        .update(resetToken)
+        .digest("hex");
+    return resetToken;
+};
 
 const User = mongoose.model("User", UserSchema);
 
