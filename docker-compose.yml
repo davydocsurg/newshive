@@ -14,11 +14,11 @@ services:
 
   backend:
     container_name: backend
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        - NODE_ENV=development
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    #   args:
+    #     - NODE_ENV=development
     image: newshive-backend
     volumes:
       - ./:/newshive
