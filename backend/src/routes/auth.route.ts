@@ -10,5 +10,6 @@ authRoutes.post(
     ValidateRegistrationRequest,
     catchAsync(AuthController.register)
 );
+authRoutes.post("/login", catchAsync(AuthController.login));
 
 export default authRoutes;
