@@ -1,16 +1,29 @@
 version: '3'
 
 services:
-  newshive:
-    container_name: newshive
-    build:
-      context: .
-      dockerfile: Dockerfile
-      args:
-        - NODE_ENV=development
-    image: node
+  frontend:
+    image: newshive-frontend
     volumes:
-      - .:/src
+      - ./:/app
+    stdin_open: true
+    ports:
+      - '3000:3000'
+    networks:
+      - newshive-network
+    command: ['npm', 'run', 'dev']
+
+  backend:
+    container_name: backend
+    # build:
+    #   context: .
+    #   dockerfile: Dockerfile
+    #   args:
+    #     - NODE_ENV=development
+    image: newshive-backend
+    volumes:
+      - ./:/newshive
+    env_file:
+      - backend/.env
     ports:
       - 8080:8080
     networks:

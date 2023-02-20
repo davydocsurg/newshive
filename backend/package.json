@@ -1,5 +1,5 @@
 {
-    "name": "node-rest-api",
+    "name": "@davydocsurg-newshive/backend",
     "version": "1.0.0",
     "description": "REST API with nodejs",
     "main": "index.ts",
