@@ -21,8 +21,13 @@ import {
     Drawer,
     mainListItems,
     secondaryListItems,
+    languages,
+    formFields,
+    publisherCountry,
+    publishedWithin,
+    searchIn,
 } from "@/commons";
-import { drawerWidth, languages } from "@/config";
+import { drawerWidth } from "@/config";
 
 function DashboardContent() {
     const [open, setOpen] = useState(true);
@@ -74,18 +79,7 @@ function DashboardContent() {
                         </IconButton>
                     </Toolbar>
                 </AppBar>
-                <Drawer
-                    variant="persistent"
-                    open={open}
-                    sx={{
-                        width: drawerWidth,
-                        flexShrink: 0,
-                        "& .MuiDrawer-paper": {
-                            width: drawerWidth,
-                            boxSizing: "border-box",
-                        },
-                    }}
-                >
+                <Drawer variant="permanent" anchor="left" open={open}>
                     <Toolbar
                         sx={{
                             display: "flex",
@@ -99,16 +93,41 @@ function DashboardContent() {
                         </IconButton>
                     </Toolbar>
                     <Divider />
+                    {/* <Box
+                        sx={{
+                            minWidth: 120,
+                            maxWidth: 220,
+                            display: "block",
+                            overflow: "auto",
+                        }}
+                    > */}
                     <List component="nav">
-                        <Box sx={{ minWidth: 120, maxWidth: 220 }}>
-                            <CustomSelect
-                                label="Article Language"
-                                options={languages}
-                            />
-                        </Box>
-                        <Divider sx={{ my: 1 }} />
-                        {secondaryListItems}
+                        {/* <>
+                            {formFields.map((item) => {
+                                <CustomSelect
+                                    label={item.label}
+                                    options={item.options}
+                                />;
+                            })}
+                        </> */}
+                        <CustomSelect
+                            label="Article Language"
+                            options={languages}
+                        />
+
+                        <CustomSelect
+                            label="Publisher's Country"
+                            options={publisherCountry}
+                        />
+
+                        <CustomSelect
+                            label="Published Within"
+                            options={publishedWithin}
+                        />
+
+                        <CustomSelect label="Search In" options={searchIn} />
                     </List>
+                    {/* </Box> */}
                 </Drawer>
                 <Box
                     component="main"

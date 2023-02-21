@@ -64,3 +64,28 @@ export const secondaryListItems = (
         </ListItemButton>
     </React.Fragment>
 );
+
+export const languages = ["en", "ar", "de", "es", "fr", "he"];
+export const publisherCountry = [
+    "United States",
+    "United Kingdom",
+    "Canada",
+    "Australia",
+    "Germany",
+    "France",
+    "Spain",
+    "Italy",
+    "Netherlands",
+    "Belgium",
+];
+
+export const publishedWithin = ["Last 24 hours", "Last 7 days"];
+
+export const searchIn = ["Title", "Title and Body"];
+
+export const formFields = [
+    {
+        label: "Article Language",
+        options: languages,
+    },
+];
