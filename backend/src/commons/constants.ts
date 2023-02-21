@@ -5,3 +5,6 @@ export const cookieOptions = {
     secure: false,
     httpOnly: true,
 };
+export const NEWS_PER_PAGE = 10;
+export const NEWS_PER_PAGE_ADMIN = 20;
+export const NEWS_API_BASE_URL = "https://api.newscatcherapi.com/v2/";
