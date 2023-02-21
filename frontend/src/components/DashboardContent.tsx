@@ -28,6 +28,7 @@ import {
     searchIn,
 } from "@/commons";
 import { drawerWidth } from "@/config";
+import Search from "./Search";
 
 function DashboardContent() {
     const [open, setOpen] = useState(true);
@@ -154,7 +155,7 @@ function DashboardContent() {
                                         height: 240,
                                     }}
                                 >
-                                    {/* <Chart /> */}
+                                    <Search />
                                 </Paper>
                             </Grid>
                             {/* Recent Deposits */}
