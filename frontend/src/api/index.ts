@@ -95,3 +95,5 @@ api.interceptors.response.use(
         return promise;
     }
 );
+
+export default api;

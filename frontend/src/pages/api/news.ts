@@ -20,4 +20,4 @@ const getNews = async (
     }
 };
 
-export { getNews };
+export default getNews;
