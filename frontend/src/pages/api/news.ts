@@ -1,4 +1,5 @@
 import api from "@/api";
+import { NEWS_API_BASE_URL } from "@/config";
 
 const getNews = async (
     query: string,
@@ -8,7 +9,8 @@ const getNews = async (
 ) => {
     try {
         const response = await api.get(
-            `/search?q=${query}&from=${publishedDate}&countries=${country}&page_size=${pageSize}`
+            NEWS_API_BASE_URL +
+                `search?q=${query}&from=${publishedDate}&countries=${country}&page_size=${pageSize}`
         );
         console.log(response.data);
 

@@ -51,3 +51,5 @@ export const SERVER_ERROR = "Something has gone wrong, please try again";
 // HTTP 503
 export const SERVICE_UNAVAILABLE =
     "Service unavailable. Please try again later";
+
+export const API_BASE_URL = "http://localhost:3000/api/";
