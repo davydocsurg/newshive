@@ -6,15 +6,25 @@ import { useState } from "react";
 import { ListSubheader } from "@mui/material";
 
 interface customSelectProps {
+    // value?: string;
     label: string;
     options: string[];
+    defaultValue?: string;
 }
 
-const CustomSelect = ({ label, options }: customSelectProps) => {
-    const [age, setAge] = useState("");
+const CustomSelect = ({
+    // value,
+    label,
+    options,
+    defaultValue,
+}: customSelectProps) => {
+    const [selected, setSelected] = useState("");
 
     const handleChange = (event: SelectChangeEvent) => {
-        setAge(event.target.value as string);
+        console.log(event.target.value, "target");
+
+        setSelected(event.target.value as string);
+        console.log(selected, "selected");
     };
 
     return (
@@ -29,9 +39,10 @@ const CustomSelect = ({ label, options }: customSelectProps) => {
                 <Select
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    value={age}
+                    value={selected}
                     label="Age"
                     onChange={handleChange}
+                    defaultValue={defaultValue}
                 >
                     {options.map((option, index) => {
                         return (

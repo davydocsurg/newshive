@@ -3,7 +3,7 @@ import { TextField } from "@mui/material";
 import React, { useState } from "react";
 
 const Search = (): React.ReactElement => {
-    const [NewsSearch, setNewsSearch] = useState("");
+    const [newsSearch, setNewsSearch] = useState("");
 
     const searchNews = async (e: any) => {
         e.preventDefault();

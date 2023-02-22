@@ -6,7 +6,7 @@ import { createContext, useContext, useState } from "react";
 type SearchTerms = {
     language: string;
     publisherCountry: string;
-    publisherWithin: string;
+    publishedWithin: string;
     searchIn: string;
     query: string;
 };
@@ -22,25 +22,43 @@ type NewsDataState = {
 };
 
 type InitialNewsState = {
-    newsSearch: SearchTerms;
+    // newsSearch: SearchTerms;
+    language: string;
+    publisherCountry: string;
+    publishedWithin: string;
+    searchIn: string;
+    query: string;
     newsData: [];
     searchNews: () => void;
+    // setNewsSearch: (newsSearch: any) => void;
+    setLanguage: (language: string) => void;
+    setPublisherCountry: (publisherCountry: string) => void;
+    setPublishedWithin: (publishedWithin: string) => void;
+    setQuery: (query: string) => void;
+    setSearchIn: (searchIn: string) => void;
 };
 
 export const NewsContext = createContext<InitialNewsState>({
-    newsSearch: {
-        language: "",
-        publisherCountry: "",
-        publisherWithin: "",
-        query: "",
-        searchIn: "",
-    },
+    language: "",
+    publisherCountry: "",
+    publishedWithin: "",
+    query: "",
+    searchIn: "",
     newsData: [],
     searchNews: () => {},
+    setLanguage: () => {},
+    setPublishedWithin: () => {},
+    setPublisherCountry: () => {},
+    setQuery: () => {},
+    setSearchIn: () => {},
 });
 
 export const NewsProvider = ({ children }: JSX.Element | any) => {
-    const [newsSearch, setNewsSearch] = useState({} as NewsSearchState);
+    const [language, setLanguage] = useState("");
+    const [publisherCountry, setPublisherCountry] = useState("");
+    const [publishedWithin, setPublishedWithin] = useState("");
+    const [query, setQuery] = useState("");
+    const [searchIn, setSearchIn] = useState("");
     const [newsData, setNewsData] = useState({} as NewsDataState);
 
     const searchNews = async () => {
@@ -51,9 +69,18 @@ export const NewsProvider = ({ children }: JSX.Element | any) => {
     return (
         <NewsContext.Provider
             value={{
-                newsSearch: newsSearch.newsSearch,
                 newsData: [],
                 searchNews,
+                language,
+                publishedWithin,
+                publisherCountry,
+                query,
+                searchIn,
+                setLanguage,
+                setPublishedWithin,
+                setPublisherCountry,
+                setQuery,
+                setSearchIn,
             }}
         >
             {children}

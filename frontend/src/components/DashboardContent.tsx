@@ -114,19 +114,26 @@ function DashboardContent() {
                         <CustomSelect
                             label="Article Language"
                             options={languages}
+                            defaultValue={languages[0]}
                         />
 
                         <CustomSelect
                             label="Publisher's Country"
                             options={publisherCountry}
+                            defaultValue="all"
                         />
 
                         <CustomSelect
                             label="Published Within"
                             options={publishedWithin}
+                            defaultValue="last 7 days"
                         />
 
-                        <CustomSelect label="Search In" options={searchIn} />
+                        <CustomSelect
+                            label="Search In"
+                            options={searchIn}
+                            defaultValue="Title and Article Body"
+                        />
                     </List>
                     {/* </Box> */}
                 </Drawer>
