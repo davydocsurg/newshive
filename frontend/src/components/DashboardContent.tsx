@@ -29,6 +29,7 @@ import {
 } from "@/commons";
 import { drawerWidth } from "@/config";
 import Search from "./Search";
+import SelectForm from "./SelectForm";
 
 function DashboardContent() {
     const [open, setOpen] = useState(true);
@@ -103,37 +104,7 @@ function DashboardContent() {
                         }}
                     > */}
                     <List component="nav">
-                        {/* <>
-                            {formFields.map((item) => {
-                                <CustomSelect
-                                    label={item.label}
-                                    options={item.options}
-                                />;
-                            })}
-                        </> */}
-                        <CustomSelect
-                            label="Article Language"
-                            options={languages}
-                            defaultValue={languages[0]}
-                        />
-
-                        <CustomSelect
-                            label="Publisher's Country"
-                            options={publisherCountry}
-                            defaultValue="all"
-                        />
-
-                        <CustomSelect
-                            label="Published Within"
-                            options={publishedWithin}
-                            defaultValue="last 7 days"
-                        />
-
-                        <CustomSelect
-                            label="Search In"
-                            options={searchIn}
-                            defaultValue="Title and Article Body"
-                        />
+                        <SelectForm />
                     </List>
                     {/* </Box> */}
                 </Drawer>

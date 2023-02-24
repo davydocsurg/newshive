@@ -1,3 +1,4 @@
 import Dashboard from "./Dashboard";
+import SelectForm from "./SelectForm";
 
-export { Dashboard };
+export { Dashboard, SelectForm };

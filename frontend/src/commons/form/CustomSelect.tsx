@@ -2,8 +2,9 @@ import InputLabel from "@mui/material/InputLabel";
 import MenuItem from "@mui/material/MenuItem";
 import FormControl from "@mui/material/FormControl";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { ListSubheader } from "@mui/material";
+import { NewsContext } from "@/context";
 
 interface customSelectProps {
     // value?: string;
@@ -18,13 +19,19 @@ const CustomSelect = ({
     options,
     defaultValue,
 }: customSelectProps) => {
-    const [selected, setSelected] = useState("");
+    const {
+        language,
+        setLanguage,
+        setPublishedWithin,
+        setPublisherCountry,
+        setSearchIn,
+    } = useContext(NewsContext);
 
     const handleChange = (event: SelectChangeEvent) => {
-        console.log(event.target.value, "target");
-
-        setSelected(event.target.value as string);
-        console.log(selected, "selected");
+        if (event.target.name == "Article Language") {
+            setLanguage(event.target.value);
+            console.log(language);
+        }
     };
 
     return (
@@ -37,12 +44,13 @@ const CustomSelect = ({
             >
                 <InputLabel id="demo-simple-select-label">{label}</InputLabel>
                 <Select
+                    name={label}
                     labelId="demo-simple-select-label"
                     id="demo-simple-select"
-                    value={selected}
-                    label="Age"
+                    // value={language}
+                    label={label}
                     onChange={handleChange}
-                    defaultValue={defaultValue}
+                    // defaultValue={defaultValue}
                 >
                     {options.map((option, index) => {
                         return (
