@@ -1,35 +1,43 @@
 import { NewsContext } from "@/context";
 import getNews from "@/pages/api/news";
-import { TextField } from "@mui/material";
+import { Button, SelectChangeEvent, TextField } from "@mui/material";
 import React, { useContext, useState } from "react";
 
 const Search = (): React.ReactElement => {
-    const { query, setQuery } = useContext(NewsContext);
+    const { query, language, publishedWithin, publisherCountry, setQuery } =
+        useContext(NewsContext);
 
     const searchNews = async (e: any) => {
         e.preventDefault();
-        if (e.code == "Enter") {
-            await getNews();
-        }
+        await getNews(query, publisherCountry, publishedWithin);
+    };
+
+    const handleQueryChange = (e: any) => {
+        setQuery(e.target.value);
     };
 
     return (
         <>
-            <form action="" method="get" onSubmit={searchNews}>
-                <TextField
-                    id="outlined-basic"
-                    label="Search News About:"
-                    variant="outlined"
-                    // defaultValue={"query"}
-                    onChange={(e) => {
-                        setQuery(e.target.value);
-                        console.log(query);
-                    }}
-                    value={query}
-                    // onKeyDown={searchNews}
-                    fullWidth
-                />
-            </form>
+            {/* <form action="" method="get" onSubmit={searchNews}> */}
+            <TextField
+                id="outlined-basic"
+                label="Search News About:"
+                variant="outlined"
+                // defaultValue={"query"}
+                onChange={handleQueryChange}
+                value={query}
+                fullWidth
+            />
+            <Button
+                sx={{ mt: 4, width: "20%", alignSelf: "center" }}
+                variant="outlined"
+                size="small"
+                onClick={searchNews}
+            >
+                Search
+            </Button>
+
+            {/* </form> */}
         </>
     );
 };
