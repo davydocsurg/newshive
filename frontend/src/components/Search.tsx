@@ -1,9 +1,10 @@
+import { NewsContext } from "@/context";
 import getNews from "@/pages/api/news";
 import { TextField } from "@mui/material";
-import React, { useState } from "react";
+import React, { useContext, useState } from "react";
 
 const Search = (): React.ReactElement => {
-    const [newsSearch, setNewsSearch] = useState("");
+    const { query, setQuery } = useContext(NewsContext);
 
     const searchNews = async (e: any) => {
         e.preventDefault();
@@ -19,10 +20,13 @@ const Search = (): React.ReactElement => {
                     id="outlined-basic"
                     label="Search News About:"
                     variant="outlined"
+                    // defaultValue={"query"}
                     onChange={(e) => {
-                        setNewsSearch(e.target.value);
+                        setQuery(e.target.value);
+                        console.log(query);
                     }}
-                    onKeyDown={searchNews}
+                    value={query}
+                    // onKeyDown={searchNews}
                     fullWidth
                 />
             </form>

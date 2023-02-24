@@ -88,4 +88,17 @@ export const NewsProvider = ({ children }: JSX.Element | any) => {
     );
 };
 
+NewsProvider.getInitialProps = async () => {
+    return {
+        intialState: {
+            language: "",
+            publisherCountry: "",
+            publishedWithin: "",
+            query: "",
+            searchIn: "",
+            newsData: [],
+        },
+    };
+};
+
 export const useNewsContext = () => useContext(NewsContext);

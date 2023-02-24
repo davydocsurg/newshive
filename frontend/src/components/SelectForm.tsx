@@ -16,7 +16,7 @@ import {
 } from "@mui/material";
 import React, { useContext } from "react";
 
-const SelectForm = (): React.ReactElement => {
+const SelectForm = ({ intialState }: any): React.ReactElement => {
     const {
         language,
         setLanguage,
@@ -150,5 +150,12 @@ const SelectForm = (): React.ReactElement => {
         </>
     );
 };
+// SelectForm.getInitialProps = async () => {
+//     return {
+//         intialState: {
+//             language: "en",
+//         },
+//     };
+// };
 
 export default SelectForm;
