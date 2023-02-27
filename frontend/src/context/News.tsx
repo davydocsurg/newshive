@@ -40,7 +40,7 @@ type NewsDataState = {
 };
 
 type InitialNewsState = {
-    // newsSearch: SearchTerms;
+    loading: boolean;
     language: string;
     publisherCountry: string;
     publishedWithin: string;
@@ -48,6 +48,7 @@ type InitialNewsState = {
     query: string;
     newsData: NewsDataState[];
     searchNews: () => void;
+    setLoading: (loading: boolean) => void;
     setNewsData: (newsData: NewsDataState[]) => void;
     setLanguage: (language: string) => void;
     setPublisherCountry: (publisherCountry: string | null) => void;
@@ -57,6 +58,7 @@ type InitialNewsState = {
 };
 
 export const NewsContext = createContext<InitialNewsState>({
+    loading: false,
     language: "",
     publisherCountry: "",
     publishedWithin: "",
@@ -87,6 +89,7 @@ export const NewsContext = createContext<InitialNewsState>({
         },
     ],
     setNewsData: () => {},
+    setLoading: () => {},
     searchNews: () => {},
     setLanguage: () => {},
     setPublishedWithin: () => {},
@@ -96,6 +99,7 @@ export const NewsContext = createContext<InitialNewsState>({
 });
 
 export const NewsProvider = ({ children }: JSX.Element | any) => {
+    const [loading, setLoading] = useState(false);
     const [language, setLanguage] = useState("");
     const [publisherCountry, setPublisherCountry] = useState<string | any>(
         null
@@ -113,6 +117,7 @@ export const NewsProvider = ({ children }: JSX.Element | any) => {
     return (
         <NewsContext.Provider
             value={{
+                loading,
                 newsData,
                 searchNews,
                 language,
@@ -121,6 +126,7 @@ export const NewsProvider = ({ children }: JSX.Element | any) => {
                 query,
                 searchIn,
                 setLanguage,
+                setLoading,
                 setPublishedWithin,
                 setPublisherCountry,
                 setQuery,

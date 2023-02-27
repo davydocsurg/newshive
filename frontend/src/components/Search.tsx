@@ -4,12 +4,22 @@ import { Button, SelectChangeEvent, TextField } from "@mui/material";
 import React, { useContext, useState } from "react";
 
 const Search = (): React.ReactElement => {
-    const { query, language, publishedWithin, publisherCountry, setQuery } =
-        useContext(NewsContext);
+    const {
+        query,
+        language,
+        publishedWithin,
+        publisherCountry,
+        setQuery,
+        setNewsData,
+    } = useContext(NewsContext);
+    const [loading, setLoading] = useState(false);
 
-    const searchNews = async (e: any) => {
+    const searchNews = async (e: React.ChangeEvent<any>) => {
         e.preventDefault();
-        await getNews(query, publisherCountry, publishedWithin);
+        setLoading(true);
+        const res = await getNews(query, publisherCountry, publishedWithin);
+        setLoading(false);
+        setNewsData(res.articles);
     };
 
     const handleQueryChange = (e: any) => {
