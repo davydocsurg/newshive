@@ -6,20 +6,24 @@ import React, { useContext, useState } from "react";
 const Search = (): React.ReactElement => {
     const {
         query,
-        language,
+        loading,
         publishedWithin,
         publisherCountry,
+        newsData,
         setQuery,
         setNewsData,
+        setLoading,
     } = useContext(NewsContext);
-    const [loading, setLoading] = useState(false);
 
     const searchNews = async (e: React.ChangeEvent<any>) => {
         e.preventDefault();
         setLoading(true);
         const res = await getNews(query, publisherCountry, publishedWithin);
         setLoading(false);
-        setNewsData(res.articles);
+        if (res.status == "ok") {
+            setNewsData(res.articles);
+            console.log(newsData);
+        }
     };
 
     const handleQueryChange = (e: any) => {
@@ -43,8 +47,9 @@ const Search = (): React.ReactElement => {
                 variant="outlined"
                 size="small"
                 onClick={searchNews}
+                disabled={loading}
             >
-                Search
+                {loading ? "Searching..." : "Search"}
             </Button>
 
             {/* </form> */}

@@ -30,6 +30,7 @@ import {
 import { drawerWidth } from "@/config";
 import Search from "./Search";
 import SelectForm from "./SelectForm";
+import NewsResults from "./NewsResults";
 
 function DashboardContent() {
     const [open, setOpen] = useState(true);
@@ -158,7 +159,7 @@ function DashboardContent() {
                                         flexDirection: "column",
                                     }}
                                 >
-                                    {/* <Orders /> */}
+                                    <NewsResults />
                                 </Paper>
                             </Grid>
                         </Grid>
