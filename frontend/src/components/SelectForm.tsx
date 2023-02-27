@@ -14,7 +14,7 @@ import {
     Select,
     SelectChangeEvent,
 } from "@mui/material";
-import React, { useContext } from "react";
+import React, { useContext, useEffect } from "react";
 
 const SelectForm = ({ intialState }: any): React.ReactElement => {
     const {
@@ -24,6 +24,13 @@ const SelectForm = ({ intialState }: any): React.ReactElement => {
         setPublisherCountry,
         setSearchIn,
     } = useContext(NewsContext);
+
+    useEffect(() => {
+        setLanguage("en");
+        setSearchIn("title and body");
+        setPublishedWithin("2023/02/20");
+        setPublisherCountry(null);
+    }, []);
 
     return (
         <>
@@ -73,14 +80,14 @@ const SelectForm = ({ intialState }: any): React.ReactElement => {
                         id="demo-simple-select"
                         label={"Publisher's Country"}
                         onChange={(e: SelectChangeEvent) =>
-                            setPublisherCountry(e.target.value)
+                            setPublisherCountry(e.target.value as string)
                         }
-                        defaultValue={publisherCountry[0]}
+                        defaultValue={publisherCountry[0].value!}
                     >
-                        {publisherCountry.map((option, index) => {
+                        {publisherCountry.map((country, index) => {
                             return (
-                                <MenuItem key={index} value={option}>
-                                    {option}
+                                <MenuItem key={index!} value={country.value!}>
+                                    {country.option}
                                 </MenuItem>
                             );
                         })}

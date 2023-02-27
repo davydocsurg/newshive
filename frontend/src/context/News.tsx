@@ -32,7 +32,7 @@ type InitialNewsState = {
     searchNews: () => void;
     // setNewsSearch: (newsSearch: any) => void;
     setLanguage: (language: string) => void;
-    setPublisherCountry: (publisherCountry: string) => void;
+    setPublisherCountry: (publisherCountry: string | null) => void;
     setPublishedWithin: (publishedWithin: string) => void;
     setQuery: (query: string) => void;
     setSearchIn: (searchIn: string) => void;
@@ -55,7 +55,9 @@ export const NewsContext = createContext<InitialNewsState>({
 
 export const NewsProvider = ({ children }: JSX.Element | any) => {
     const [language, setLanguage] = useState("");
-    const [publisherCountry, setPublisherCountry] = useState("");
+    const [publisherCountry, setPublisherCountry] = useState<string | any>(
+        null
+    );
     const [publishedWithin, setPublishedWithin] = useState("");
     const [query, setQuery] = useState("");
     const [searchIn, setSearchIn] = useState("");

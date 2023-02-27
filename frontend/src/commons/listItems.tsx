@@ -67,16 +67,17 @@ export const secondaryListItems = (
 
 export const languages = ["en", "ar", "de", "es", "fr", "he"];
 export const publisherCountry = [
-    "United States",
-    "United Kingdom",
-    "Canada",
-    "Australia",
-    "Germany",
-    "France",
-    "Spain",
-    "Italy",
-    "Netherlands",
-    "Belgium",
+    { option: "all", value: null },
+    { option: "United States", value: "US" },
+    { option: "United Kingdom", value: "Uk" },
+    { option: "Canada", value: "CA" },
+    { option: "Australia", value: "AU" },
+    { option: "Germany", value: "GR" },
+    { option: "France", value: "FR" },
+    { option: "Spain", value: "SP" },
+    { option: "Italy", value: "IT" },
+    { option: "Netherlands", value: "NE" },
+    { option: "Belgium", value: "BE" },
 ];
 
 export const publishedWithin = ["Last 24 hours", "Last 7 days"];

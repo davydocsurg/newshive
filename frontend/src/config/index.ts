@@ -8,6 +8,7 @@ import {
     SERVICE_UNAVAILABLE,
     UNAUTHORIZED,
     API_BASE_URL,
+    NEWS_API_KEY,
 } from "./constants";
 
 export {
@@ -20,4 +21,5 @@ export {
     SERVICE_UNAVAILABLE,
     UNAUTHORIZED,
     API_BASE_URL,
+    NEWS_API_KEY,
 };
