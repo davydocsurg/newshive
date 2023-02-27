@@ -10,6 +10,7 @@ const Search = (): React.ReactElement => {
         publishedWithin,
         publisherCountry,
         newsData,
+        pageSize,
         setQuery,
         setNewsData,
         setLoading,
@@ -18,7 +19,12 @@ const Search = (): React.ReactElement => {
     const searchNews = async (e: React.ChangeEvent<any>) => {
         e.preventDefault();
         setLoading(true);
-        const res = await getNews(query, publisherCountry, publishedWithin);
+        const res = await getNews(
+            query,
+            publisherCountry,
+            publishedWithin,
+            pageSize
+        );
         setLoading(false);
         if (res.status == "ok") {
             setNewsData(res.articles);

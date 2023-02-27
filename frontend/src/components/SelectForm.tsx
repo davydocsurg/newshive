@@ -1,5 +1,6 @@
 import {
     languages,
+    pageSize,
     publishedWithin,
     publisherCountry,
     searchIn,
@@ -23,6 +24,7 @@ const SelectForm = ({ intialState }: any): React.ReactElement => {
         setPublishedWithin,
         setPublisherCountry,
         setSearchIn,
+        setPageSize,
     } = useContext(NewsContext);
 
     useEffect(() => {
@@ -30,6 +32,7 @@ const SelectForm = ({ intialState }: any): React.ReactElement => {
         setSearchIn("title and body");
         setPublishedWithin("2023/02/20");
         setPublisherCountry(null);
+        setPageSize(1);
     }, []);
 
     return (
@@ -145,6 +148,36 @@ const SelectForm = ({ intialState }: any): React.ReactElement => {
                         defaultValue={searchIn[1]}
                     >
                         {searchIn.map((option, index) => {
+                            return (
+                                <MenuItem key={index} value={option}>
+                                    {option}
+                                </MenuItem>
+                            );
+                        })}
+                    </Select>
+                </FormControl>
+            </ListSubheader>
+
+            <ListSubheader>
+                <FormControl
+                    fullWidth
+                    sx={{
+                        marginBottom: "1rem",
+                    }}
+                >
+                    <InputLabel id="demo-simple-select-label">
+                        Page Size
+                    </InputLabel>
+                    <Select
+                        labelId="demo-simple-select-label"
+                        id="demo-simple-select"
+                        label={"Published Within"}
+                        onChange={(e: SelectChangeEvent) =>
+                            setPageSize(+e.target.value)
+                        }
+                        defaultValue={pageSize[0].toString()}
+                    >
+                        {pageSize.map((option, index) => {
                             return (
                                 <MenuItem key={index} value={option}>
                                     {option}

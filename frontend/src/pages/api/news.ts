@@ -5,11 +5,10 @@ const getNews = async (
     query: string,
     // language: string,
     country: string,
-    publishedDate: string
-    // pageSize?: 1
+    publishedDate: string,
+    pageSize: number
 ) => {
     try {
-        let pageSize = 1;
         const response = await api.get(
             NEWS_API_BASE_URL +
                 `search?q=${query}&from=${publishedDate}&countries=${country}&page_size=${pageSize}`

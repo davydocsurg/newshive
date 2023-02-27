@@ -80,6 +80,8 @@ export const publisherCountry = [
     { option: "Belgium", value: "BE" },
 ];
 
+export const pageSize = [1, 5, 10, 15, 20, 25, 30, 35, 40, 45, 50];
+
 export const publishedWithin = ["Last 24 hours", "Last 7 days"];
 
 export const searchIn = ["Title", "Title and Body"];
