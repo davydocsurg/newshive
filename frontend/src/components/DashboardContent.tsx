@@ -75,11 +75,6 @@ function DashboardContent() {
                         >
                             NewsHive
                         </Typography>
-                        <IconButton color="inherit">
-                            {/* <Badge badgeContent={4} color="secondary"> */}
-                            <MenuIcon />
-                            {/* </Badge> */}
-                        </IconButton>
                     </Toolbar>
                 </AppBar>
                 <Drawer variant="permanent" anchor="left" open={open}>
