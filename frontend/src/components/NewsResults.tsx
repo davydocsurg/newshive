@@ -18,7 +18,7 @@ const NewsResults = (): React.ReactElement => {
                     <>
                         <Grid container spacing={2}>
                             <Grid item xs={4} md={2}>
-                                <Typography variant="h6">Title:</Typography>
+                                <Typography>Title:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
                                 <Typography
@@ -33,7 +33,7 @@ const NewsResults = (): React.ReactElement => {
 
                         <Grid container spacing={2}>
                             <Grid item xs={4} md={2}>
-                                <Typography variant="h6">Author:</Typography>
+                                <Typography>Author:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
                                 <Typography key={index} gutterBottom>
@@ -44,9 +44,7 @@ const NewsResults = (): React.ReactElement => {
 
                         <Grid container spacing={2}>
                             <Grid item xs={4} md={2}>
-                                <Typography variant="h6">
-                                    Published Date:
-                                </Typography>
+                                <Typography>Published Date:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
                                 <Typography key={index} gutterBottom>
@@ -57,7 +55,7 @@ const NewsResults = (): React.ReactElement => {
 
                         <Grid container spacing={2}>
                             <Grid item xs={4} md={2}>
-                                <Typography variant="h6">Link:</Typography>
+                                <Typography>Link:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
                                 <Link
@@ -72,7 +70,7 @@ const NewsResults = (): React.ReactElement => {
 
                         <Grid container spacing={2}>
                             <Grid item xs={4} md={2}>
-                                <Typography variant="h6">Clean URL:</Typography>
+                                <Typography>Clean URL:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
                                 <Link
@@ -87,7 +85,7 @@ const NewsResults = (): React.ReactElement => {
 
                         <Grid container spacing={2}>
                             <Grid item xs={4} md={2}>
-                                <Typography variant="h6">Excerpt:</Typography>
+                                <Typography>Excerpt:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
                                 <Typography key={index} gutterBottom>
@@ -98,7 +96,7 @@ const NewsResults = (): React.ReactElement => {
 
                         <Grid container spacing={2}>
                             <Grid item xs={4} md={2}>
-                                <Typography variant="h6">Summary:</Typography>
+                                <Typography>Summary:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
                                 <Typography key={index} gutterBottom>
@@ -109,7 +107,7 @@ const NewsResults = (): React.ReactElement => {
 
                         <Grid container spacing={2}>
                             <Grid item xs={4} md={2}>
-                                <Typography variant="h6">Rights:</Typography>
+                                <Typography>Rights:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
                                 <Typography key={index} gutterBottom>
@@ -120,7 +118,7 @@ const NewsResults = (): React.ReactElement => {
 
                         <Grid container spacing={2}>
                             <Grid item xs={4} md={2}>
-                                <Typography variant="h6">Rank:</Typography>
+                                <Typography>Rank:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
                                 <Typography key={index} gutterBottom>
@@ -131,7 +129,7 @@ const NewsResults = (): React.ReactElement => {
 
                         <Grid container spacing={2}>
                             <Grid item xs={4} md={2}>
-                                <Typography variant="h6">Topic:</Typography>
+                                <Typography>Topic:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
                                 <Typography key={index} gutterBottom>
@@ -142,11 +140,81 @@ const NewsResults = (): React.ReactElement => {
 
                         <Grid container spacing={2}>
                             <Grid item xs={4} md={2}>
-                                <Typography variant="h6">Country:</Typography>
+                                <Typography>Country:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
                                 <Typography key={index} gutterBottom>
                                     {article.country}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+
+                        <Grid container spacing={2}>
+                            <Grid item xs={4} md={2}>
+                                <Typography>Language:</Typography>
+                            </Grid>
+                            <Grid item xs={8} md={10}>
+                                <Typography key={index} gutterBottom>
+                                    {article.language}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+
+                        <Grid container spacing={2}>
+                            <Grid item xs={4} md={2}>
+                                <Typography>Authors:</Typography>
+                            </Grid>
+                            <Grid item xs={8} md={10}>
+                                <Typography key={index} gutterBottom>
+                                    {article.authors}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+
+                        <Grid container spacing={2}>
+                            <Grid item xs={4} md={2}>
+                                <Typography>Media:</Typography>
+                            </Grid>
+                            <Grid item xs={8} md={10}>
+                                <Link
+                                    key={index}
+                                    href={article.media}
+                                    gutterBottom
+                                >
+                                    {article.clean_url}
+                                </Link>
+                            </Grid>
+                        </Grid>
+
+                        <Grid container spacing={2}>
+                            <Grid item xs={4} md={2}>
+                                <Typography>Is Opinion:</Typography>
+                            </Grid>
+                            <Grid item xs={8} md={10}>
+                                <Typography key={index} gutterBottom>
+                                    {article.is_opinion}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+
+                        <Grid container spacing={2}>
+                            <Grid item xs={4} md={2}>
+                                <Typography>Twitter Account:</Typography>
+                            </Grid>
+                            <Grid item xs={8} md={10}>
+                                <Typography key={index} gutterBottom>
+                                    {article.twitter_account}
+                                </Typography>
+                            </Grid>
+                        </Grid>
+
+                        <Grid container spacing={2}>
+                            <Grid item xs={4} md={2}>
+                                <Typography>Score:</Typography>
+                            </Grid>
+                            <Grid item xs={8} md={10}>
+                                <Typography key={index} gutterBottom>
+                                    {article._score}
                                 </Typography>
                             </Grid>
                         </Grid>
