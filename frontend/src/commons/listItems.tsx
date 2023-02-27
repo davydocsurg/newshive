@@ -67,7 +67,7 @@ export const secondaryListItems = (
 
 export const languages = ["en", "ar", "de", "es", "fr", "he"];
 export const publisherCountry = [
-    { option: "all", value: "" },
+    // { option: "all", value: "" },
     { option: "United States", value: "US" },
     { option: "United Kingdom", value: "Uk" },
     { option: "Canada", value: "CA" },

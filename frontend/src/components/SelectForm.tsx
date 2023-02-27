@@ -31,7 +31,7 @@ const SelectForm = ({ intialState }: any): React.ReactElement => {
         setLanguage("en");
         setSearchIn("title and body");
         setPublishedWithin("2023/02/20");
-        setPublisherCountry(null);
+        setPublisherCountry("CA");
         setPageSize(1);
     }, []);
 

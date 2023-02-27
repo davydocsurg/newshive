@@ -52,7 +52,7 @@ type InitialNewsState = {
     setLoading: (loading: boolean) => void;
     setNewsData: (newsData: NewsDataState[]) => void;
     setLanguage: (language: string) => void;
-    setPublisherCountry: (publisherCountry: string | null) => void;
+    setPublisherCountry: (publisherCountry: string) => void;
     setPublishedWithin: (publishedWithin: string) => void;
     setQuery: (query: string) => void;
     setSearchIn: (searchIn: string) => void;
@@ -106,9 +106,7 @@ export const NewsProvider = ({ children }: JSX.Element | any) => {
     const [loading, setLoading] = useState(false);
     const [language, setLanguage] = useState("");
     const [pageSize, setPageSize] = useState(1 as number);
-    const [publisherCountry, setPublisherCountry] = useState<string | any>(
-        null
-    );
+    const [publisherCountry, setPublisherCountry] = useState<string>("");
     const [publishedWithin, setPublishedWithin] = useState("");
     const [query, setQuery] = useState("");
     const [searchIn, setSearchIn] = useState("");

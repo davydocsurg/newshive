@@ -36,7 +36,7 @@ const NewsResults = (): React.ReactElement => {
                                 <Typography>Author:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
-                                <Typography key={index} gutterBottom>
+                                <Typography key={index + "1"} gutterBottom>
                                     {article.author}
                                 </Typography>
                             </Grid>
@@ -47,7 +47,7 @@ const NewsResults = (): React.ReactElement => {
                                 <Typography>Published Date:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
-                                <Typography key={index} gutterBottom>
+                                <Typography key={index + "2"} gutterBottom>
                                     {article.published_date}
                                 </Typography>
                             </Grid>
@@ -59,7 +59,7 @@ const NewsResults = (): React.ReactElement => {
                             </Grid>
                             <Grid item xs={8} md={10}>
                                 <Link
-                                    key={index}
+                                    key={index + "3"}
                                     href={article.link}
                                     gutterBottom
                                 >
@@ -74,7 +74,7 @@ const NewsResults = (): React.ReactElement => {
                             </Grid>
                             <Grid item xs={8} md={10}>
                                 <Link
-                                    key={index}
+                                    key={index + "4"}
                                     href={article.clean_url}
                                     gutterBottom
                                 >
@@ -88,7 +88,7 @@ const NewsResults = (): React.ReactElement => {
                                 <Typography>Excerpt:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
-                                <Typography key={index} gutterBottom>
+                                <Typography key={index + "5"} gutterBottom>
                                     {article.excerpt}
                                 </Typography>
                             </Grid>
@@ -99,7 +99,7 @@ const NewsResults = (): React.ReactElement => {
                                 <Typography>Summary:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
-                                <Typography key={index} gutterBottom>
+                                <Typography key={index + "6"} gutterBottom>
                                     {article.summary}
                                 </Typography>
                             </Grid>
@@ -110,7 +110,7 @@ const NewsResults = (): React.ReactElement => {
                                 <Typography>Rights:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
-                                <Typography key={index} gutterBottom>
+                                <Typography key={index + "7"} gutterBottom>
                                     {article.rights}
                                 </Typography>
                             </Grid>
@@ -121,7 +121,7 @@ const NewsResults = (): React.ReactElement => {
                                 <Typography>Rank:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
-                                <Typography key={index} gutterBottom>
+                                <Typography key={index + "8"} gutterBottom>
                                     {article.rank}
                                 </Typography>
                             </Grid>
@@ -132,7 +132,7 @@ const NewsResults = (): React.ReactElement => {
                                 <Typography>Topic:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
-                                <Typography key={index} gutterBottom>
+                                <Typography key={index + "9"} gutterBottom>
                                     {article.topic}
                                 </Typography>
                             </Grid>
@@ -143,7 +143,7 @@ const NewsResults = (): React.ReactElement => {
                                 <Typography>Country:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
-                                <Typography key={index} gutterBottom>
+                                <Typography key={index + "10"} gutterBottom>
                                     {article.country}
                                 </Typography>
                             </Grid>
@@ -154,7 +154,7 @@ const NewsResults = (): React.ReactElement => {
                                 <Typography>Language:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
-                                <Typography key={index} gutterBottom>
+                                <Typography key={index + "11"} gutterBottom>
                                     {article.language}
                                 </Typography>
                             </Grid>
@@ -165,7 +165,7 @@ const NewsResults = (): React.ReactElement => {
                                 <Typography>Authors:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
-                                <Typography key={index} gutterBottom>
+                                <Typography key={index + "12"} gutterBottom>
                                     {article.authors}
                                 </Typography>
                             </Grid>
@@ -177,7 +177,7 @@ const NewsResults = (): React.ReactElement => {
                             </Grid>
                             <Grid item xs={8} md={10}>
                                 <Link
-                                    key={index}
+                                    key={index + "13"}
                                     href={article.media}
                                     gutterBottom
                                 >
@@ -191,7 +191,7 @@ const NewsResults = (): React.ReactElement => {
                                 <Typography>Is Opinion:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
-                                <Typography key={index} gutterBottom>
+                                <Typography key={index + "14"} gutterBottom>
                                     {article.is_opinion}
                                 </Typography>
                             </Grid>
@@ -202,7 +202,7 @@ const NewsResults = (): React.ReactElement => {
                                 <Typography>Twitter Account:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
-                                <Typography key={index} gutterBottom>
+                                <Typography key={index + "15"} gutterBottom>
                                     {article.twitter_account}
                                 </Typography>
                             </Grid>
@@ -213,7 +213,7 @@ const NewsResults = (): React.ReactElement => {
                                 <Typography>Score:</Typography>
                             </Grid>
                             <Grid item xs={8} md={10}>
-                                <Typography key={index} gutterBottom>
+                                <Typography key={index + "16"} gutterBottom>
                                     {article._score}
                                 </Typography>
                             </Grid>

@@ -132,8 +132,7 @@ function DashboardContent() {
                                     <Search />
                                 </Paper>
                             </Grid>
-                            {/* Recent Deposits */}
-                            <Grid item xs={12} md={2} lg={3}>
+                            {/* <Grid item xs={12} md={2} lg={3}>
                                 <Paper
                                     sx={{
                                         p: 2,
@@ -143,9 +142,8 @@ function DashboardContent() {
                                     }}
                                 >
                                     {/* <Deposits /> */}
-                                </Paper>
-                            </Grid>
-                            {/* Recent Orders */}
+                            {/* </Paper> */}
+                            {/* </Grid> */}
                             <Grid item xs={12}>
                                 <Paper
                                     sx={{
