@@ -42,6 +42,7 @@ type NewsDataState = {
 type InitialNewsState = {
     loading: boolean;
     language: string;
+    pageSize: number;
     publisherCountry: string;
     publishedWithin: string;
     searchIn: string;
@@ -55,10 +56,12 @@ type InitialNewsState = {
     setPublishedWithin: (publishedWithin: string) => void;
     setQuery: (query: string) => void;
     setSearchIn: (searchIn: string) => void;
+    setPageSize: (pageSize: number) => void;
 };
 
 export const NewsContext = createContext<InitialNewsState>({
     loading: false,
+    pageSize: 1,
     language: "",
     publisherCountry: "",
     publishedWithin: "",
@@ -96,11 +99,13 @@ export const NewsContext = createContext<InitialNewsState>({
     setPublisherCountry: () => {},
     setQuery: () => {},
     setSearchIn: () => {},
+    setPageSize: () => {},
 });
 
 export const NewsProvider = ({ children }: JSX.Element | any) => {
     const [loading, setLoading] = useState(false);
     const [language, setLanguage] = useState("");
+    const [pageSize, setPageSize] = useState(1 as number);
     const [publisherCountry, setPublisherCountry] = useState<string | any>(
         null
     );
@@ -119,12 +124,13 @@ export const NewsProvider = ({ children }: JSX.Element | any) => {
             value={{
                 loading,
                 newsData,
-                searchNews,
+                pageSize,
                 language,
                 publishedWithin,
                 publisherCountry,
                 query,
                 searchIn,
+                searchNews,
                 setLanguage,
                 setLoading,
                 setPublishedWithin,
@@ -132,6 +138,7 @@ export const NewsProvider = ({ children }: JSX.Element | any) => {
                 setQuery,
                 setSearchIn,
                 setNewsData,
+                setPageSize,
             }}
         >
             {children}
