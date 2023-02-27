@@ -1,5 +1,6 @@
 import {
     NEWS_API_BASE_URL,
+    NEWS_API_KEY,
     NOT_FOUND,
     SERVER_ERROR,
     SERVICE_UNAVAILABLE,
@@ -9,6 +10,9 @@ import axios from "axios";
 
 const api = axios.create({
     baseURL: NEWS_API_BASE_URL,
+    headers: {
+        "x-api-key": NEWS_API_KEY,
+    },
 });
 
 const createError = (message?: string, code?: number, errors?: any) => {
@@ -34,7 +38,7 @@ api.interceptors.response.use(
             promise = Promise.reject(error);
         } else {
             // get error status
-            const { status, data } = error.response;
+            const { status, data } = error;
 
             // handle errors
             switch (status) {
@@ -95,3 +99,5 @@ api.interceptors.response.use(
         return promise;
     }
 );
+
+export default api;

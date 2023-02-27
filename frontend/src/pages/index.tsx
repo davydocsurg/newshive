@@ -1,9 +1,12 @@
 import { Dashboard } from "@/components";
+import { NewsProvider } from "@/context";
 
 export default function Home() {
     return (
         <>
-            <Dashboard />
+            <NewsProvider>
+                <Dashboard />
+            </NewsProvider>
         </>
     );
 }

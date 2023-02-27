@@ -8,6 +8,7 @@ import {
     publisherCountry,
     publishedWithin,
     searchIn,
+    pageSize,
 } from "./listItems";
 
 export {
@@ -20,5 +21,6 @@ export {
     publisherCountry,
     publishedWithin,
     searchIn,
+    pageSize,
     CustomSelect,
 };
