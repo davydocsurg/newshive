@@ -1,5 +1,5 @@
 import { NewsContext } from "@/context";
-import { Grid, Link, Typography } from "@mui/material";
+import { Divider, Grid, Link, Typography } from "@mui/material";
 import React, { useContext } from "react";
 
 const NewsResults = (): React.ReactElement => {
@@ -16,7 +16,7 @@ const NewsResults = (): React.ReactElement => {
             {newsData.map((article, index) => {
                 return (
                     <>
-                        <Grid container spacing={2}>
+                        <Grid container spacing={2} sx={{ mt: 2 }}>
                             <Grid item xs={4} md={2}>
                                 <Typography>Title:</Typography>
                             </Grid>
@@ -218,6 +218,7 @@ const NewsResults = (): React.ReactElement => {
                                 </Typography>
                             </Grid>
                         </Grid>
+                        <Divider />
                     </>
                 );
             })}
