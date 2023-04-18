@@ -117,7 +117,7 @@ const DashboardContent = () => {
                 <Main open={open}>
                     <DrawerHeader />
                     <Grid container spacing={3}>
-                        <Grid item xs={12} md={10} lg={9}>
+                        <Grid item xs={12} md={10} lg={12}>
                             <Paper
                                 sx={{
                                     p: 2,
@@ -131,7 +131,7 @@ const DashboardContent = () => {
                         </Grid>
 
                         <Grid item xs={12}>
-                            {newsData.length > 0 && (
+                            {newsData?.length > 0 && (
                                 <Paper
                                     sx={{
                                         p: 2,

@@ -18,18 +18,27 @@ const Search = (): React.ReactElement => {
 
     const searchNews = async (e: React.ChangeEvent<any>) => {
         e.preventDefault();
-        setLoading(true);
-        const res = await getNews(
-            query,
-            publisherCountry,
-            publishedWithin,
-            pageSize
-        );
-        setLoading(false);
-        if (res.status == "ok") {
-            setNewsData(res.articles);
-            console.log(newsData);
+        if (query === "") {
+            return;
         }
+        setLoading(true);
+        try {
+            const res = await getNews(
+                query,
+                publisherCountry,
+                publishedWithin,
+                pageSize
+            );
+
+            setNewsData(res.articles);
+            setLoading(false);
+        } catch (error: any) {
+            setLoading(false);
+            return error;
+        }
+        // if (res.status == "ok") {
+        //     console.log(newsData);
+        // }
     };
 
     const handleQueryChange = (e: any) => {
@@ -46,12 +55,13 @@ const Search = (): React.ReactElement => {
                 // defaultValue={"query"}
                 onChange={handleQueryChange}
                 value={query}
+                required={true}
                 fullWidth
             />
             <Button
-                sx={{ mt: 4, width: "20%", alignSelf: "center" }}
+                sx={{ mt: 4, width: "30%", alignSelf: "center" }}
                 variant="outlined"
-                size="small"
+                size="medium"
                 onClick={searchNews}
                 disabled={loading}
             >

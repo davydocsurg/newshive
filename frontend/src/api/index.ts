@@ -50,7 +50,7 @@ api.interceptors.response.use(
 
                 case 400:
                     promise = Promise.reject(
-                        createError(data.message, 400, data.errors)
+                        createError(data.message, 400, data)
                     );
                     break;
 
@@ -90,7 +90,7 @@ api.interceptors.response.use(
 
                 default:
                     promise = Promise.reject(
-                        createError(data.message, status, data.errors)
+                        createError(data, status, data.errors)
                     );
                     break;
             }
