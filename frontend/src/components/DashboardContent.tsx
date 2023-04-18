@@ -1,38 +1,30 @@
-import { createTheme, styled, ThemeProvider } from "@mui/material/styles";
-import { useState } from "react";
-import CssBaseline from "@mui/material/CssBaseline";
+import * as React from "react";
+import { styled, useTheme } from "@mui/material/styles";
 import Box from "@mui/material/Box";
+import Drawer from "@mui/material/Drawer";
+import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
 import Toolbar from "@mui/material/Toolbar";
+import CssBaseline from "@mui/material/CssBaseline";
 import List from "@mui/material/List";
+import Typography from "@mui/material/Typography";
 import Divider from "@mui/material/Divider";
 import IconButton from "@mui/material/IconButton";
-import Badge from "@mui/material/Badge";
-import Container from "@mui/material/Container";
-import Grid from "@mui/material/Grid";
-import Paper from "@mui/material/Paper";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import NotificationsIcon from "@mui/icons-material/Notifications";
-import Typography from "@mui/material/Typography";
-import MuiAppBar, { AppBarProps as MuiAppBarProps } from "@mui/material/AppBar";
-
-import {
-    AppBar,
-    CustomSelect,
-    Drawer,
-    mainListItems,
-    secondaryListItems,
-    languages,
-    formFields,
-    publisherCountry,
-    publishedWithin,
-    searchIn,
-} from "@/commons";
-import { drawerWidth } from "@/config";
+import ListItem from "@mui/material/ListItem";
+import ListItemButton from "@mui/material/ListItemButton";
+import ListItemIcon from "@mui/material/ListItemIcon";
+import ListItemText from "@mui/material/ListItemText";
+import InboxIcon from "@mui/icons-material/MoveToInbox";
+import MailIcon from "@mui/icons-material/Mail";
+import { Grid, Paper, createTheme } from "@mui/material";
 import Search from "./Search";
-import SelectForm from "./SelectForm";
 import NewsResults from "./NewsResults";
+import SelectForm from "./SelectForm";
+import { ThemeProvider } from "@emotion/react";
+
+const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })<{
     open?: boolean;
@@ -57,7 +49,7 @@ interface AppBarProps extends MuiAppBarProps {
     open?: boolean;
 }
 
-const CAppBar = styled(MuiAppBar, {
+const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== "open",
 })<AppBarProps>(({ theme, open }) => ({
     transition: theme.transitions.create(["margin", "width"], {
@@ -83,54 +75,49 @@ const DrawerHeader = styled("div")(({ theme }) => ({
     justifyContent: "flex-start",
 }));
 
-function DashboardContent() {
-    const [open, setOpen] = useState(false);
-    const toggleDrawer = () => {
-        setOpen(!open);
-    };
-
-    const mdTheme = createTheme({
+const DashboardContent = () => {
+    const theme = createTheme({
         palette: {
             mode: "dark",
         },
     });
+    const [open, setOpen] = React.useState(false);
+
+    const handleDrawerOpen = () => {
+        setOpen(true);
+    };
+
+    const handleDrawerClose = () => {
+        setOpen(false);
+    };
 
     return (
-        <ThemeProvider theme={mdTheme}>
+        <ThemeProvider theme={theme}>
             <Box sx={{ display: "flex" }}>
                 <CssBaseline />
-                <CAppBar position="fixed" open={open}>
-                    <Toolbar
-                        sx={{
-                            pr: "24px", // keep right padding when drawer closed
-                        }}
-                    >
+                <AppBar position="fixed" open={open}>
+                    <Toolbar>
                         <Typography
-                            component="h1"
                             variant="h6"
-                            color="inherit"
                             noWrap
                             sx={{ flexGrow: 1 }}
+                            component="div"
                         >
                             NewsHive
                         </Typography>
                         <IconButton
-                            edge="start"
                             color="inherit"
                             aria-label="open drawer"
-                            onClick={toggleDrawer}
-                            sx={{
-                                marginRight: "36px",
-                                ...(open && { display: "none" }),
-                            }}
+                            edge="end"
+                            onClick={handleDrawerOpen}
+                            sx={{ ...(open && { display: "none" }) }}
                         >
                             <MenuIcon />
                         </IconButton>
                     </Toolbar>
-                </CAppBar>
+                </AppBar>
                 <Main open={open}>
                     <DrawerHeader />
-                    {/* <Container maxWidth="lg" sx={{ mt: 4, mb: 4 }}> */}
                     <Grid container spacing={3}>
                         {/* Chart */}
                         <Grid item xs={12} md={10} lg={9}>
@@ -169,8 +156,6 @@ function DashboardContent() {
                             </Paper>
                         </Grid>
                     </Grid>
-                    {/* <Copyright sx={{ pt: 4 }} /> */}
-                    {/* </Container> */}
                 </Main>
                 <Drawer
                     sx={{
@@ -185,8 +170,8 @@ function DashboardContent() {
                     open={open}
                 >
                     <DrawerHeader>
-                        <IconButton onClick={toggleDrawer}>
-                            {mdTheme.direction === "rtl" ? (
+                        <IconButton onClick={handleDrawerClose}>
+                            {theme.direction === "rtl" ? (
                                 <ChevronLeftIcon />
                             ) : (
                                 <ChevronRightIcon />
@@ -194,42 +179,13 @@ function DashboardContent() {
                         </IconButton>
                     </DrawerHeader>
                     <Divider />
-                    {/* <Toolbar
-                        sx={{
-                            display: "flex",
-                            alignItems: "center",
-                            justifyContent: "flex-end",
-                            px: [1],
-                        }}
-                    >
-                        <IconButton onClick={toggleDrawer}>
-                            <ChevronLeftIcon />
-                        </IconButton>
-                    </Toolbar>
-                    <Divider /> */}
-
-                    {/* <List component="nav">
+                    <List component="nav">
                         <SelectForm />
-                    </List> */}
-                    {/* </Box> */}
+                    </List>
                 </Drawer>
-                {/* <Box
-                    component="main"
-                    sx={{
-                        backgroundColor: (theme) =>
-                            theme.palette.mode === "light"
-                                ? theme.palette.grey[100]
-                                : theme.palette.grey[900],
-                        flexGrow: 1,
-                        height: "100vh",
-                        overflow: "auto",
-                    }}
-                >
-                    <Toolbar />
-                </Box> */}
             </Box>
         </ThemeProvider>
     );
-}
+};
 
 export default DashboardContent;
