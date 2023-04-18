@@ -7,12 +7,12 @@ const NewsResults = (): React.ReactElement => {
 
     if (loading) {
         return <Typography>Loading...</Typography>;
-    } else if (newsData.length == 0) {
-        return <Typography>No results found</Typography>;
     }
+    // else if (newsData.length === 0) {
+    //     return <Typography>No results found</Typography>;
+    // }
     return (
         <>
-            {/* {newsData[0].title} */}
             {newsData.map((article, index) => {
                 return (
                     <>

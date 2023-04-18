@@ -12,17 +12,13 @@ import IconButton from "@mui/material/IconButton";
 import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
-import ListItem from "@mui/material/ListItem";
-import ListItemButton from "@mui/material/ListItemButton";
-import ListItemIcon from "@mui/material/ListItemIcon";
-import ListItemText from "@mui/material/ListItemText";
-import InboxIcon from "@mui/icons-material/MoveToInbox";
-import MailIcon from "@mui/icons-material/Mail";
 import { Grid, Paper, createTheme } from "@mui/material";
+
 import Search from "./Search";
 import NewsResults from "./NewsResults";
 import SelectForm from "./SelectForm";
 import { ThemeProvider } from "@emotion/react";
+import { NewsContext } from "@/context";
 
 const drawerWidth = 240;
 
@@ -81,7 +77,7 @@ const DashboardContent = () => {
             mode: "dark",
         },
     });
-    const [open, setOpen] = React.useState(false);
+    const [open, setOpen] = React.useState(true);
 
     const handleDrawerOpen = () => {
         setOpen(true);
@@ -90,6 +86,8 @@ const DashboardContent = () => {
     const handleDrawerClose = () => {
         setOpen(false);
     };
+
+    const { newsData } = React.useContext(NewsContext);
 
     return (
         <ThemeProvider theme={theme}>
@@ -119,7 +117,6 @@ const DashboardContent = () => {
                 <Main open={open}>
                     <DrawerHeader />
                     <Grid container spacing={3}>
-                        {/* Chart */}
                         <Grid item xs={12} md={10} lg={9}>
                             <Paper
                                 sx={{
@@ -132,28 +129,19 @@ const DashboardContent = () => {
                                 <Search />
                             </Paper>
                         </Grid>
-                        {/* <Grid item xs={12} md={2} lg={3}>
+
+                        <Grid item xs={12}>
+                            {newsData.length > 0 && (
                                 <Paper
                                     sx={{
                                         p: 2,
                                         display: "flex",
                                         flexDirection: "column",
-                                        height: 240,
                                     }}
                                 >
-                                    {/* <Deposits /> */}
-                        {/* </Paper> */}
-                        {/* </Grid> */}
-                        <Grid item xs={12}>
-                            <Paper
-                                sx={{
-                                    p: 2,
-                                    display: "flex",
-                                    flexDirection: "column",
-                                }}
-                            >
-                                <NewsResults />
-                            </Paper>
+                                    <NewsResults />
+                                </Paper>
+                            )}
                         </Grid>
                     </Grid>
                 </Main>
