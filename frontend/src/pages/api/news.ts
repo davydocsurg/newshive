@@ -13,12 +13,13 @@ const getNews = async (
             NEWS_API_BASE_URL +
                 `search?q=${query}&from=${publishedDate}&countries=${country}&page_size=${pageSize}`
         );
+        console.log(response);
 
         return response.data;
     } catch (err) {
         console.error(err);
 
-        throw err;
+        return err;
     }
 };
 
